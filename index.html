@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>Qmaps - CUNY Degree Maps</title>
+		<style type = "text/css">
+			body {
+				background-color: #ffffff;
+				font-family: Tahoma;
+				color: #000000;
+			}
+			h1 {
+				font-size: 18px;
+				font-weight:bold;
+			}
+		</style>
+		<style type = "text/css">
+			.banner {
+				background-color: #e2e2e2;
+				font-family: Verdana;
+				font-size: 25px;
+			}
+			.banner ul {
+				float: right;
+				margin: 2px;
+				font-size: 15px;
+				position: fixed;
+				top: 45px;
+				right: 10px;
+			}
+		</style>
+		<style type = "text/css">
+			.search-section {
+				background-color: #f7f7f7;
+				border-radius: 3px;
+				padding: 1em;
+				font-size: 13px;
+			}
+			.search-title {
+				font-family: Verdana;
+				font-size: 15px;
+			}
+			.search-bar {
+				background-color: #ffffff;
+				min-width: 200px;
+				height: 23px;
+				appearance: none;
+				font-size: 14px;
+			}
+		</style>
+		<script>
+			/*function for enabling other selects when the required one is selected'*/
+			function myFunction() {
+				document.getElementById("majors").disabled = false;
+				document.getElementById("terms").disabled = false;
+			}
+			/*function to show the result according to the selection*/
+			function showResult() {
+				document.getElementById("result").style.display = "block";
+				var major = document.getElementById("majors");
+				var majorResult = major.options[major.selectedIndex].text;
+				var term = document.getElementById("terms");
+				var termResult = term.options[term.selectedIndex].text;
+				document.getElementById("majorFreshman").innerHTML = "Welcome to " + majorResult + " " + termResult;
+				document.getElementById("majorSophomore").innerHTML = "Welcome to " + majorResult + " " + termResult;
+				document.getElementById("majorJunior").innerHTML = "Welcome to " + majorResult + " " + termResult;
+				document.getElementById("majorSenior").innerHTML = "Welcome to " + majorResult + " " + termResult;
+			}
+		</script>
+		<style type = "text/css">
+			table.resultTable {
+				width: 666px;
+				border-radius: 25px;
+				border-width: 1px;
+				border-color: #666666;
+			}
+			table.resultTable th {
+				background-color: #e71c3a;
+				font-size: 17px;
+				color: #ffffff;
+			}
+			table.resultTable tr {
+				background-color: #f7f7f7;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class = "banner">
+			<img src = "logo.png" width = "60" height = "60" align = "center"> MAPS
+			<ul><a href = "login.html">Sign in</a></ul>
+		</div>
+		<div>
+			<h1>Degree Maps Search</h1>
+			<section class = "search-section">
+				<div>
+					<span class = "search-title">Campus (required)</span>
+					<div>
+						<select class = "search-bar" onchange = "myFunction()">
+							<option selected value disabled>Select</option>
+							<option value = "qc">Queens College</option>
+						</select>
+					</div>
+					<span class = "search-title">Majors</span>
+					<div>
+						<select class = "search-bar" id = "majors" disabled>
+							<option selected value  disabled>Select</option>
+							<option value = "cs">Computer Science</option>
+							<option value = "math">Math</option>
+						</select>
+					</div>
+					<span class = "search-title">Start Term</span>
+					<div>
+						<select class = "search-bar" id = "terms" disabled>
+							<option selected value disabled>Any</option>
+							<option value = "201901">Spring 2019</option>
+							<option value = "201902">Fall 2019</option>
+						</select>
+					</div>
+				</div>
+				<br></br>
+				<button onclick = "showResult()">Submit</button>
+			</section>
+			<br></br>
+			<div id = "result" style = "display: none">
+				<table class = "resultTable">
+					<tr>
+						<th>Freshman</th>
+					</tr>
+					<tr id = "majorFreshman"></tr>
+				</table>
+				<br></br>
+				<table class = "resultTable">
+					<tr>
+						<th>Sophomore</th>
+					</tr>
+					<tr id = "majorSophomore"></tr>
+				</table>
+				<br></br>
+				<table class = "resultTable">
+					<tr>
+						<th>Junior</th>
+					</tr>
+					<tr id = "majorJunior"></tr>
+				</table>
+				<br></br>
+				<table class = "resultTable">
+					<tr>
+						<th>Senior</th>
+					</tr>
+					<tr id = "majorSenior"></tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
