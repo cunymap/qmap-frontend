@@ -8,7 +8,6 @@ jobs:
       - run: make ssh-ok
       - run: make get-code
       - run: make update-frontend
-      - run: make upload-backend
       - run: make repair-permissions
 
 workflows:
