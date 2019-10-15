@@ -4,7 +4,6 @@ jobs:
     docker:
       image: circleci/node:10.16.3
     steps:
-      - checkout
       run: make ssh-ok
       run: make get-code
       run: make update-frontend
