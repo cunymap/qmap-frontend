@@ -18,4 +18,5 @@ update-frontend:
 	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "cp -r qmap-frontend/* public_html/"	
 
 repair-permissions:
-	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "chmod -R 754 public_html"
+	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "chmod -R 604 public_html"
+	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "chmod 703 public_html"
