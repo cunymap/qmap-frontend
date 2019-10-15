@@ -15,8 +15,7 @@ get-code:
 update-frontend:
 	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "rm -r public_html"
 	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "mkdir public_html"
-	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "cp -r qmap-frontend/* public_html/"	
+	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "cd qmap-frontend; cp -r . public_html/"	
 
 repair-permissions:
 	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "chmod 703 public_html"
-	@sshpass -p ${SSH_PASS} ssh ${SSH_USER}@${SSH_HOST} "bash -c 'chmod -R 604 public_html/*'"
