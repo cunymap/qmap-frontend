@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   upload-to-venus:
     docker:
-      image: circleci/node:10.16.3
+      - image: circleci/node:10.16.3
     steps:
       - run: make ssh-ok
       - run: make get-code
