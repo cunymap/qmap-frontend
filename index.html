@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags: Charset, Responsive -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="https://www2.cuny.edu/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <title>Home - CUNY Degree Maps</title>
   </head>
@@ -17,7 +20,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
-        <img src="https://seeklogo.com/images/C/cuny-logo-E85957DB00-seeklogo.com.png" height="30" class="d-inline-block align-top" alt="CUNY">
+        <img src="assets/img/cuny-logo.png" height="30" class="d-inline-block align-top" alt="City University of New York">
         Degree Maps
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,13 +39,13 @@
           </li>
         </ul>
         <span class="navbar-text">
-          Admin Login
+          <a href="login.html">Admin Login</a>
         </span>
       </div>
     </nav>
 
     <!-- Home Form -->
-    <div class="container">
+    <div class="container" style="padding-top: 5vh;">
       <div class="row">
         <div class="col-12 col-md-2">
         </div>
@@ -58,66 +61,66 @@
         <div class="col-12 col-md-6">
 
           <div>
-      			<section class = "search-section">
-      				<div>
-      					<span class = "search-title">Campus (required)</span>
-      					<div>
-      						<select class = "search-bar" onchange = "myFunction()">
-      							<option selected value disabled>Select</option>
-      							<option value = "qc">Queens College</option>
-      						</select>
-      					</div>
-      					<span class = "search-title">Majors</span>
-      					<div>
-      						<select class = "search-bar" id = "majors" disabled>
-      							<option selected value  disabled>Select</option>
-      							<option value = "cs">Computer Science</option>
-      							<option value = "math">Math</option>
-      						</select>
-      					</div>
-      					<span class = "search-title">Start Term</span>
-      					<div>
-      						<select class = "search-bar" id = "terms" disabled>
-      							<option selected value disabled>Any</option>
-      							<option value = "201901">Spring 2019</option>
-      							<option value = "201902">Fall 2019</option>
-      						</select>
-      					</div>
-      				</div>
-      				<br></br>
-      				<button onclick = "showResult()">Submit</button>
-      			</section>
-      			<br></br>
-      			<div id = "result" style = "display: none">
-      				<table class = "resultTable">
-      					<tr>
-      						<th>Freshman</th>
-      					</tr>
-      					<tr id = "majorFreshman"></tr>
-      				</table>
-      				<br></br>
-      				<table class = "resultTable">
-      					<tr>
-      						<th>Sophomore</th>
-      					</tr>
-      					<tr id = "majorSophomore"></tr>
-      				</table>
-      				<br></br>
-      				<table class = "resultTable">
-      					<tr>
-      						<th>Junior</th>
-      					</tr>
-      					<tr id = "majorJunior"></tr>
-      				</table>
-      				<br></br>
-      				<table class = "resultTable">
-      					<tr>
-      						<th>Senior</th>
-      					</tr>
-      					<tr id = "majorSenior"></tr>
-      				</table>
-      			</div>
-      		</div>
+            <section class = "search-section">
+              <div>
+                <span class = "search-title">Campus (required)</span>
+                <div>
+                  <select class = "search-bar" onchange = "myFunction()">
+                    <option selected value disabled>Select</option>
+                    <option value = "qc">Queens College</option>
+                  </select>
+                </div>
+                <span class = "search-title">Majors</span>
+                <div>
+                  <select class = "search-bar" id = "majors" disabled>
+                    <option selected value  disabled>Select</option>
+                    <option value = "cs">Computer Science</option>
+                    <option value = "math">Math</option>
+                  </select>
+                </div>
+                <span class = "search-title">Start Term</span>
+                <div>
+                  <select class = "search-bar" id = "terms" disabled>
+                    <option selected value disabled>Any</option>
+                    <option value = "201901">Spring 2019</option>
+                    <option value = "201902">Fall 2019</option>
+                  </select>
+                </div>
+              </div>
+              <br></br>
+              <button onclick = "showResult()">Submit</button>
+            </section>
+            <br>
+            <div id = "result" style = "display: none">
+              <table class = "resultTable">
+                <tr>
+                  <th>Freshman</th>
+                </tr>
+                <tr id = "majorFreshman"></tr>
+              </table>
+              <br></br>
+              <table class = "resultTable">
+                <tr>
+                  <th>Sophomore</th>
+                </tr>
+                <tr id = "majorSophomore"></tr>
+              </table>
+              <br></br>
+              <table class = "resultTable">
+                <tr>
+                  <th>Junior</th>
+                </tr>
+                <tr id = "majorJunior"></tr>
+              </table>
+              <br></br>
+              <table class = "resultTable">
+                <tr>
+                  <th>Senior</th>
+                </tr>
+                <tr id = "majorSenior"></tr>
+              </table>
+            </div>
+          </div>
 
         </div>
         <div class="col-12 col-md-3">
@@ -148,24 +151,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script>
-			/*function for enabling other selects when the required one is selected'*/
-			function myFunction() {
-				document.getElementById("majors").disabled = false;
-				document.getElementById("terms").disabled = false;
-			}
-			/*function to show the result according to the selection*/
-			function showResult() {
-				document.getElementById("result").style.display = "block";
-				var major = document.getElementById("majors");
-				var majorResult = major.options[major.selectedIndex].text;
-				var term = document.getElementById("terms");
-				var termResult = term.options[term.selectedIndex].text;
-				document.getElementById("majorFreshman").innerHTML = "Welcome to " + majorResult + " " + termResult;
-				document.getElementById("majorSophomore").innerHTML = "Welcome to " + majorResult + " " + termResult;
-				document.getElementById("majorJunior").innerHTML = "Welcome to " + majorResult + " " + termResult;
-				document.getElementById("majorSenior").innerHTML = "Welcome to " + majorResult + " " + termResult;
-			}
-    </script>
+    <!-- Custom JavsScript-->
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
