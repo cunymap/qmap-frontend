@@ -14,11 +14,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://www2.cuny.edu/favicon.ico">
 
     <title>Admin - CUNY Degree Maps</title>
-<html>
-   
-   <head>
-      <title>Welcome </title>
-   </head>
+  </head>
    
    <body>
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
