@@ -20,15 +20,8 @@ if (mysqli_connect_error()){
 $results = $conn->query("SELECT * FROM admin WHERE username = '$user' and password = '$pass'");
 $obj = $results->fetch_array();
 if($user == $obj['username'] && $pass = $obj['password']){
-	//echo "Welcome to admin ".$obj['first_name'];
-	//echo "!";
 	header("location:admin.php");
 } else {
-	//echo "Invalid username or password.";
-	
 	echo "<script>alert('Invalid username or password.'); parent.location.href = './login.html'</script>";
-	//include('login.php');
-	//header("location:login.php");
-
 }
 ?>
