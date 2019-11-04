@@ -6,7 +6,6 @@ $password = ""; // change to dmap db password later
 $db_name = "myproject"; //change to dmap db name later
 $user = $_POST['username'];
 $pass = $_POST['password'];
-$message = "Invalid username or password.";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $db_name);
