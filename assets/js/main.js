@@ -15,3 +15,8 @@ function showResult() {
   document.getElementById("majorJunior").innerHTML = "Welcome to " + majorResult + " " + termResult;
   document.getElementById("majorSenior").innerHTML = "Welcome to " + majorResult + " " + termResult;
 }
+
+// initialize Bootstrap tooltip
+$( document ).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip();
+});

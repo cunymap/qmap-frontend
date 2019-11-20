@@ -4,13 +4,13 @@ session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: dmap-whoami.php");
+    header("location: dmap-dashboard.php");
     exit;
 }
 
 // Include config file
-require_once "../dmap-config.php";
-require_once "dmap-db.php";
+require_once( dirname(__FILE__) . '/../dmap-config.php' );
+require_once( dirname(__FILE__) . '/dmap-db.php' );
 
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;
 
                             // Redirect user to welcome page
-                            header("location: dmap-whoami.php");
+                            header("location: dmap-dashboard.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -87,39 +87,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($link);
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
-</head>
-<body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
+// Render Login page
+$page_title = "Login";
+include(ABSPATH . 'dmap-includes/head.php');
+?>
+    <div class="container" style="padding-top: 5vh;">
+      <div class="row">
+        <div class="col-12 col-md-4">
+        </div>
+        <div class="col-12 col-md-4">
+          <h2 class="text-center">Admin Login</h2>
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i> Username</label>
+                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" placeholder="Username" required>
+                <div class="invalid-feedback"><?php echo $username_err; ?></div>
             </div>
             <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Password</label>
+                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" placeholder="Password" required>
+                <div class="invalid-feedback"><?php echo $password_err; ?></div>
+            </div>
+            <div class="form-group text-center">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p>Don't have an account? <a href="dmap-signup.php">Sign up now</a>.</p>
-        </form>
+            <p class="text-center"><a href="#" data-toggle="tooltip" data-placement="bottom" title="Contact the CUNY Service Desk at (646) 664-2311 or service.desk@cuny.edu.">Need Help with Login?</a></p>
+            <p>This page is protected by reCAPTCHA (haven't implemented yet), and subject to the <a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://www.google.com/policies/terms/" target="_blank" rel="noopener noreferrer">Terms of service</a>.</p>
+          </form>
+        </div>
+        <div class="col-12 col-md-4">
+        </div>
+      </div>
     </div>
-</body>
-</html>
+<?php
+include(ABSPATH . 'dmap-includes/foot.php');
+?>

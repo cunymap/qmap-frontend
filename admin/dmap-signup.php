@@ -1,7 +1,7 @@
 <?php
 // Include config file
-require_once "../dmap-config.php";
-require_once "dmap-db.php";
+require_once( dirname(__FILE__) . '/../dmap-config.php' );
+require_once( dirname(__FILE__) . '/dmap-db.php' );
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $instcode = "";
@@ -72,23 +72,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($link);
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
-</head>
-<body>
+// Render Login page
+$page_title = "Sign Up";
+include(ABSPATH . 'dmap-includes/head.php');
+?>
     <div class="wrapper">
         <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
+        <p>For site admin use only; Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
@@ -115,8 +106,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="reset" class="btn btn-default" value="Reset">
             </div>
             <p>Already have an account? <a href="dmap-login.php">Login here</a>.</p>
-            <p>This page is protected by reCAPTCHA, and subject to the Google Privacy Policy and Terms of service.</p>
         </form>
     </div>
-</body>
-</html>
+<?php
+include(ABSPATH . 'dmap-includes/foot.php');
+?>
