@@ -50,7 +50,7 @@
         <div class="col-12 col-md-2">
         </div>
         <div class="col-12 col-md-8">
-          <h1 class="text-center">Welcome to CUNY Degree Maps!</h1>
+          <h1 class="text-center"></h1>
         </div>
         <div class="col-12 col-md-2">
         </div>
@@ -65,32 +65,45 @@
               <div>
                 <span class = "search-title">Campus (required)</span>
                 <div>
-                  <select class = "search-bar" onchange = "myFunction()">
+                  <select class = "search-bar" onchange = "showMajor()">
                     <option selected value disabled>Select</option>
                     <option value = "qc">Queens College</option>
                   </select>
                 </div>
-                <span class = "search-title">Majors</span>
-                <div>
-                  <select class = "search-bar" id = "majors" disabled>
-                    <option selected value  disabled>Select</option>
-                    <option value = "cs">Computer Science</option>
-                    <option value = "math">Math</option>
-                  </select>
+                <div id = "major" style = "display: none;">
+                  <span class = "search-title">Majors</span>
+                  <div>
+                    <select class = "search-bar" id = "majors" onchange = "showTerm()">
+                      <option selected value  disabled>Select</option>
+                      <option value = "cs">Computer Science</option>
+                      <option value = "math">Math</option>
+                    </select>
+                  </div>
                 </div>
-                <span class = "search-title">Start Term</span>
-                <div>
-                  <select class = "search-bar" id = "terms" disabled>
-                    <option selected value disabled>Any</option>
-                    <option value = "201901">Spring 2019</option>
-                    <option value = "201902">Fall 2019</option>
-                  </select>
+                <div id = "term" style = "display: none;">
+                  <span class = "search-title">Start Term</span>
+                  <div>
+                    <select class = "search-bar" id = "terms" onchange = "showResult()">
+                      <option selected value disabled>Any</option>
+                      <option value = "201901">Spring 2019</option>
+                      <option value = "201902">Fall 2019</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <br></br>
-              <button onclick = "showResult()">Submit</button>
             </section>
-            <br>
+          
+            <div id = "prompt1" style = "display: block;">
+              <p style = "color: navy; font-size: 20px;">Choose your campus to continue.</p>
+            </div>
+            <div id = "prompt2" style = "display: none;">
+              <p style = "color: navy; font-size: 20px;">Choose your major.</p>
+            </div>
+            <div id = "prompt3" style = "display: none;">
+              <p style = "color: navy; font-size: 20px;">Choose your star term to see result.</p>
+            </div>
+            
             <div id = "result" style = "display: none">
               <table class = "resultTable">
                 <tr>
@@ -127,6 +140,8 @@
         </div>
       </div>
     </div>
+    <br><br>
+    <hr>
 
     <!-- Footer -->
     <footer>
@@ -153,5 +168,29 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Custom JavsScript-->
     <script src="assets/js/main.js"></script>
+    <script>
+      function showMajor() {
+         document.getElementById("major").style.display = "block";
+         document.getElementById("prompt1").style.display = "none";
+         document.getElementById("prompt2").style.display = "block";
+      }
+      function showTerm() {
+         document.getElementById("term").style.display = "block";
+         document.getElementById("prompt2").style.display = "none";
+         document.getElementById("prompt3").style.display = "block";
+      }
+      function showResult() {
+         document.getElementById("prompt3").style.display = "none";
+         document.getElementById("result").style.display = "block";
+         var major = document.getElementById("majors");
+         var majorResult = major.options[major.selectedIndex].text;
+         var term = document.getElementById("terms");
+         var termResult = term.options[term.selectedIndex].text;
+         document.getElementById("majorFreshman").innerHTML = "Welcome to " + majorResult + " " + termResult;
+         document.getElementById("majorSophomore").innerHTML = "Welcome to " + majorResult + " " + termResult;
+         document.getElementById("majorJunior").innerHTML = "Welcome to " + majorResult + " " + termResult;
+         document.getElementById("majorSenior").innerHTML = "Welcome to " + majorResult + " " + termResult;
+      }
+    </script>
   </body>
 </html>
