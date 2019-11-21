@@ -32,29 +32,14 @@
             <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="admin/">Admin</a>
           </li>
         </ul>
-        <span class="navbar-text">
-          <a href="admin/">Admin</a>
-        </span>
       </div>
     </nav>
 
     <!-- Home Form -->
     <div class="container" style="padding-top: 5vh;">
-      <div class="row">
-        <div class="col-12 col-md-2">
-        </div>
-        <div class="col-12 col-md-8">
-          <h1 class="text-center"></h1>
-        </div>
-        <div class="col-12 col-md-2">
-        </div>
-      </div>
       <div class="row">
         <div class="col-12 col-md-3">
         </div>
@@ -63,10 +48,10 @@
           <div>
             <section class = "search-section">
               <div>
-                <span class = "search-title">Campus (required)</span>
-                <div>
-                  <select class = "search-bar" onchange = "showMajor()">
-                    <option selected value disabled>Select</option>
+                <span class = "search-title">Campus</span>
+                <div id = "campus">
+                  <select class = "search-bar" id = "campuses" onchange = "showMajor()">
+                    <option selected value disabled>Loading...</option>
                     <option value = "qc">Queens College</option>
                   </select>
                 </div>
@@ -74,7 +59,7 @@
                   <span class = "search-title">Majors</span>
                   <div>
                     <select class = "search-bar" id = "majors" onchange = "showTerm()">
-                      <option selected value  disabled>Select</option>
+                      <option selected value disabled>Loading...</option>
                       <option value = "cs">Computer Science</option>
                       <option value = "math">Math</option>
                     </select>
@@ -84,7 +69,7 @@
                   <span class = "search-title">Start Term</span>
                   <div>
                     <select class = "search-bar" id = "terms" onchange = "showResult()">
-                      <option selected value disabled>Any</option>
+                      <option selected value disabled>Select</option>
                       <option value = "201901">Spring 2019</option>
                       <option value = "201902">Fall 2019</option>
                     </select>
@@ -93,17 +78,16 @@
               </div>
               <br></br>
             </section>
-          
-            <div id = "prompt1" style = "display: block;">
-              <p style = "color: navy; font-size: 20px;">Choose your campus to continue.</p>
-            </div>
-            <div id = "prompt2" style = "display: none;">
-              <p style = "color: navy; font-size: 20px;">Choose your major.</p>
-            </div>
-            <div id = "prompt3" style = "display: none;">
-              <p style = "color: navy; font-size: 20px;">Choose your star term to see result.</p>
-            </div>
-            
+
+            <section id="prompt">
+              <p id="prompt-content">
+                Please wait while the application is loading.
+                <noscript>
+                  <br><em>JavaScrpt is required to use this application. This <a href="https://www.enable-javascript.com/" rel="noreferrer" target="_blank">article</a> may help you to enable JavaScript.</em>
+                </noscript>
+              </p>
+            </section>
+
             <div id = "result" style = "display: none">
               <table class = "resultTable">
                 <tr>
@@ -168,19 +152,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Custom JavsScript-->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/course-ajax.js"></script>
     <script>
       function showMajor() {
          document.getElementById("major").style.display = "block";
-         document.getElementById("prompt1").style.display = "none";
-         document.getElementById("prompt2").style.display = "block";
+         document.getElementById("term").style.display = "block";
+         document.getElementById("result").style.display = "none";
+         document.getElementById("prompt-content").innerHTML = "Choose your major.";
       }
       function showTerm() {
          document.getElementById("term").style.display = "block";
-         document.getElementById("prompt2").style.display = "none";
-         document.getElementById("prompt3").style.display = "block";
+         document.getElementById("result").style.display = "none";
+         document.getElementById("prompt-content").innerHTML = "Choose your start term to see result.";
       }
       function showResult() {
-         document.getElementById("prompt3").style.display = "none";
+        document.getElementById("prompt-content").innerHTML = "The map is listed below:";
          document.getElementById("result").style.display = "block";
          var major = document.getElementById("majors");
          var majorResult = major.options[major.selectedIndex].text;
