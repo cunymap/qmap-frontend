@@ -21,6 +21,8 @@ Frontend of CUNY Degree Maps
 
 Frontend Documentation: https://github.com/cunymap/qmap-documentation/tree/master/frontend
 
+---
+
 # Git Notes
 ## Branch + Merge
 - **Create Branch:** "git checkout ____" creates subbranch from current head
