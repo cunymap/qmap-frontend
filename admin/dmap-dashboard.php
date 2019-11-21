@@ -22,6 +22,16 @@ include(ABSPATH . 'dmap-includes/head.php');
         <div class="col-12 col-md-6">
           <div class="page-header">
               <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Degree Maps admin page.</h1>
+              <p>Your login expires in
+                <?php
+                if(!empty(trim($_SESSION["rememberme"]))) {
+                  echo "7 days";
+                }
+                else {
+                  echo "24 minutes";
+                }
+                ?>.
+              </p>
           </div>
           <hr>
           <p>

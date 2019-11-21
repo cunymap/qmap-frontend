@@ -64,6 +64,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
 
+                            // PHP default session timeout is 24 min.
+                            // "Remember Me" will extend session cookie by 7 days.
+                            if(!empty(trim($_POST["rememberme"]))) {
+                              $params = session_get_cookie_params();
+                              setcookie(session_name(), $_COOKIE[session_name()], time() + 60*60*24*7, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+                              $_SESSION["rememberme"] = "yes";
+                            }
+
                             // Redirect user to welcome page
                             header("location: dmap-dashboard.php");
                         } else{
@@ -97,22 +105,38 @@ include(ABSPATH . 'dmap-includes/head.php');
         <div class="col-12 col-md-4">
         </div>
         <div class="col-12 col-md-4">
-          <h2 class="text-center">Admin Login</h2>
+          <h2 class="text-center" style="padding-bottom: 25px;">Admin Login</h2>
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label for="username"><i class="fas fa-user"></i> Username</label>
+              <label class="sr-only" for="username">Username</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-user"></i></div>
+                </div>
                 <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" placeholder="Username" required>
                 <div class="invalid-feedback"><?php echo $username_err; ?></div>
+              </div>
             </div>
             <div class="form-group">
-                <label for="password"><i class="fas fa-lock"></i> Password</label>
+              <label class="sr-only" for="password">Password</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                </div>
                 <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" placeholder="Password" required>
-                <div class="invalid-feedback"><?php echo $password_err; ?></div>
+                <div class="invalid-feedback"><?php echo $username_err; ?></div>
+              </div>
             </div>
             <div class="form-group text-center">
-                <input type="submit" class="btn btn-primary" value="Login">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="rememberme" name="rememberme" value="yes">
+                <label class="custom-control-label" for="rememberme">Remember Me for 7 Days</label>
+              </div>
             </div>
-            <p class="text-center"><a href="#" data-toggle="tooltip" data-placement="bottom" title="Contact the CUNY Service Desk at (646) 664-2311 or service.desk@cuny.edu.">Need Help with Login?</a></p>
+            <div class="form-group text-center">
+              <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+            <p class="text-center"><a href="#" data-toggle="tooltip" data-placement="bottom" title="Contact the CUNY Service Desk at (646) 664-2311 or service.desk@cuny.edu.">Need Help?</a></p>
             <p>This page is protected by reCAPTCHA (haven't implemented yet), and subject to the <a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://www.google.com/policies/terms/" target="_blank" rel="noopener noreferrer">Terms of service</a>.</p>
           </form>
         </div>
