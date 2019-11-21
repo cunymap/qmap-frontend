@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+  <!-- Required meta tags: Charset, Responsive -->  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+  <title>Admin - CUNY Degree Maps</title>
+  <style>
+    .footer {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 1rem;
+      background-color: #efefef;
+      text-align: center;
+    }
+
+    .add-section{
+      margin: 20px 10px 25px;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/cuny-logo.png" height="30" class="d-inline-block align-top" alt="City University of New York">
+      <!--add feature for specifying admin for which campus based off login info-->
+      Admin
+    </a>
+    <span class="navbar-text">
+      <a href="login.html">Log Out</a>
+    </span>
+  </nav>
+
+
+
+
+  <!--Options for Admin-->
+  <div id="options" align="center">
+    <button type="button" class="btn btn-link" onclick="showAddSection()">Construct A New Path</button>
+    <button type="button" class="btn btn-link" onclick="showDeletePath()">Delete A Path</button>
+  </div>
+
+
+
+
+  <!--Button to go back to Admin Options-->
+  <div id="back-button" hidden>
+    <button type="button" class="btn btn-link" onclick="returnHome()">Back</button>
+  </div>
+
+ <!--Divider for Add option-->
+  <div id="add-section" align = "center" hidden>
+    <form class = "col-sm-5" action="somephp.php">
+      <!--Major dropdown: figure out how to autopopulate with jquery using URL provided from database-->
+      <select id="major-dropdown" class="browser-default custom-select" name="addPath" onchange="getElementById('term-dropdown').hidden = false">
+        <option>Choose Major</option>
+        <option>Eventualy Populated With Ajax</option>
+        <option>The</option>
+        <option>Power</option>
+        <option>of</option>
+        <option>Teamwork</option>
+      </select>
+      <br>
+      <br>
+      <!--Term dropdown: js autopopulates Term Dropdown 8 semesters into the future-->
+      <select id="term-dropdown" class="browser-default custom-select" name="addPath" onchange="getElementById('class-textfield').hidden = false"hidden>
+      </select>
+      <br>
+      <br>
+      <!--Class textfield: load classes using php based of provided info,Aim to have user type and option appears-->
+      <input id ="class-textfield" type="text" class="browser-default custom-textfield" placeholder="Search Class" autocomplete="on" onchange="getElementById('addSubmit-btn').hidden = false" hidden>
+      <br>
+      <br>
+      <input id = "addSubmit-btn" type = "submit" val = "Add Path" hidden>
+    </form>
+  </div>
+
+  <!--Divider for Delete option-->
+   <div id="delete-section" align = "center" hidden>
+     <form class = "col-sm-5" action="somephp.php">
+       <!--Major dropdown: figure out how to autopopulate with jquery using URL provided from database-->
+       <select id="del-dropdown" class="browser-default custom-select" name="delPath" onchange="getElementById('delSubmit-btn').hidden = false">
+         <option>Select Path</option>
+         <option>Eventualy Populated With Ajax</option>
+       </select>
+       <br>
+       <br>
+       <input id = "delSubmit-btn" type = "submit" val = "Delete Path" hidden>
+       <br>
+     </form>
+   </div>
+
+
+  <script src = "script.js">
+  </script>
+  <!-- Footer -->
+
+  <div class="footer">
+    <div class="row">
+      <div class="col-12 col-md-2">
+      </div>
+      <div class="col-12 col-md-8">
+        <span class="text-center">
+          &copy; 2019 The Degree Maps Authors.
+          <a href="https://github.com/cunymap" target="_blank">GitHub</a>
+        </span>
+      </div>
+      <div class="col-12 col-md-2">
+        </div>
+      </div>
+    </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src=" https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- Custom JavsScript-->
+        <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
