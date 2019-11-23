@@ -1,51 +1,14 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags: Charset, Responsive -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php
+// Initialize the session
+session_start();
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+// Include config file
+require_once( dirname(__FILE__) . '/dmap-config.php' );
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <title>Home - CUNY Degree Maps</title>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-        <img src="assets/img/cuny-logo.png" height="30" class="d-inline-block align-top" id="cuny-logo" alt="City University of New York">
-        Degree Maps
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin/">Admin</a>
-          </li>
-          <li class="nav-item">
-            <div class="nav-link">
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="darkSwitch">
-                <label class="custom-control-label" for="darkSwitch">High Contrast Theme</label>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+// Render Home page
+$page_title = "Home";
+include(ABSPATH . 'dmap-includes/head.php');
+?>
     <!-- Home Form -->
     <div class="container" style="padding-top: 5vh;">
       <div class="row">

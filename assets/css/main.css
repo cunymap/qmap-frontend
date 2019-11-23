@@ -26,6 +26,6 @@
   background-color: #eee !important;
 }
 
-[data-theme="dark"] .navbar-brand, [data-theme="dark"] .nav-link {
+[data-theme="dark"] .navbar-brand, [data-theme="dark"] .nav-link, [data-theme="dark"] .navbar-text, [data-theme="dark"] .navbar-text a {
   color: #eee !important;
 }
