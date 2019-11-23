@@ -20,7 +20,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
-        <img src="assets/img/cuny-logo.png" height="30" class="d-inline-block align-top" alt="City University of New York">
+        <img src="assets/img/cuny-logo.png" height="30" class="d-inline-block align-top" id="cuny-logo" alt="City University of New York">
         Degree Maps
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +33,14 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="admin/">Admin</a>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                <label class="custom-control-label" for="darkSwitch">High Contrast Theme</label>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -152,6 +160,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Custom JavsScript-->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/dark-theme.js"></script>
     <script src="assets/js/course-ajax.js"></script>
     <script>
       function showMajor() {
