@@ -27,11 +27,11 @@ function initTheme() {
   darkSwitch.checked = darkThemeSelected;
   if (darkThemeSelected) {
     document.body.setAttribute('data-theme', 'dark');
-    document.getElementById('cuny-logo').setAttribute('src', 'https://venus.cs.qc.cuny.edu/~dmap/assets/img/cuny-logo-white.png');
+    document.getElementById('cuny-logo').setAttribute('src', 'https://cs355web.herokuapp.com/assets/img/cuny-logo-white.png');
   }
   else {
     document.body.removeAttribute('data-theme');
-    document.getElementById('cuny-logo').setAttribute('src', 'https://venus.cs.qc.cuny.edu/~dmap/assets/img/cuny-logo.png');
+    document.getElementById('cuny-logo').setAttribute('src', 'https://cs355web.herokuapp.com/assets/img/cuny-logo.png');
   }
 }
 
@@ -46,10 +46,10 @@ function resetTheme() {
   if (darkSwitch.checked) {
     document.body.setAttribute('data-theme', 'dark');
     localStorage.setItem('darkSwitch', 'dark');
-    document.getElementById('cuny-logo').setAttribute('src', 'https://venus.cs.qc.cuny.edu/~dmap/assets/img/cuny-logo-white.png');
+    document.getElementById('cuny-logo').setAttribute('src', 'https://cs355web.herokuapp.com/assets/img/cuny-logo-white.png');
   } else {
     document.body.removeAttribute('data-theme');
     localStorage.removeItem('darkSwitch');
-    document.getElementById('cuny-logo').setAttribute('src', 'https://venus.cs.qc.cuny.edu/~dmap/assets/img/cuny-logo.png');
+    document.getElementById('cuny-logo').setAttribute('src', 'https://cs355web.herokuapp.com/assets/img/cuny-logo.png');
   }
 }

@@ -1,6 +1,6 @@
 <?php
 /* Database credentials */
-define('DB_SERVER', 'localhost');
+define('DB_SERVER', '149.4.211.180');
 define('DB_USERNAME', 'dmap');
 define('DB_PASSWORD', 'dmap2019');
 define('DB_NAME', 'dmap');
@@ -13,7 +13,7 @@ define('DB_NAME', 'dmap');
 $table_prefix = 'dmap_';
 
 /* Define the dmap installation root URL. Do not put a slash at the end. */
-define('SITEURL', 'https://venus.cs.qc.cuny.edu/~dmap');
+define('SITEURL', 'https://cs355web.herokuapp.com');
 
 /* Absolute path to the dmap installation directory */
 if (!defined('ABSPATH'))
