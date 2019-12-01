@@ -15,7 +15,7 @@ xmlhttp.onreadystatechange = function() {
     console.log("Campus list Ready");
   }
 };
-var APIcampusURL = "https://qmap-backend.herokuapp.com/api/campuses/?format=json";
+var APIcampusURL = "https://cs355web.herokuapp.com/api/campuses/?format=json";
 xmlhttp.open("GET", APIcampusURL, true);
 xmlhttp.send();
 
@@ -24,7 +24,7 @@ $('#campuses').on('change', function() {
   document.getElementById("majors").innerHTML = "<option selected value disabled>Loading...</option>";
   document.getElementById("major").style.display = "block";
   document.getElementById("term").style.display = "none";
-  var APImajorURL = "https://qmap-backend.herokuapp.com/api/degrees/";
+  var APImajorURL = "https://cs355web.herokuapp.com/api/degrees/";
   var campus = $("#campuses").val();
   APImajorURL += campus + "/?format=json";
 
