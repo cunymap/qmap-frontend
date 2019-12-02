@@ -124,7 +124,7 @@ include(ABSPATH . 'dmap-includes/head.php');
                   <div class="input-group-text"><i class="fas fa-lock"></i></div>
                 </div>
                 <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" placeholder="Password" required>
-                <div class="invalid-feedback"><?php echo $username_err; ?></div>
+                <div class="invalid-feedback"><?php echo $password_err; ?></div>
               </div>
             </div>
             <div class="form-group text-center">
