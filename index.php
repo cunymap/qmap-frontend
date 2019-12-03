@@ -19,15 +19,22 @@ include(ABSPATH . 'dmap-includes/head.php');
           <div>
             <section class = "search-section">
               <div>
-                <span class = "search-title">Campus</span>
+                <section id="prompt">
+                  <p id="prompt-content">
+                    Please wait while the application is loading.
+                    <noscript>
+                    <br><em>JavaScrpt is required to use this application. This <a href="https://www.enable-javascript.com/" rel="noreferrer" target="_blank">article</a> may help you to enable JavaScript.</em>
+                    </noscript>
+                  </p>
+                </section>
                 <div id = "campus">
                   <select class = "search-bar" id = "campuses" onchange = "showMajor()">
                     <option selected value disabled>Loading...</option>
                     <option value = "qc">Queens College</option>
                   </select>
                 </div>
+                <br>
                 <div id = "major" style = "display: none;">
-                  <span class = "search-title">Majors</span>
                   <div>
                     <select class = "search-bar" id = "majors" onchange = "showTerm()">
                       <option selected value disabled>Loading...</option>
@@ -36,8 +43,8 @@ include(ABSPATH . 'dmap-includes/head.php');
                     </select>
                   </div>
                 </div>
+                <br>
                 <div id = "term" style = "display: none;">
-                  <span class = "search-title">Start Term</span>
                   <div>
                     <select class = "search-bar" id = "terms" onchange = "showResult()">
                       <option selected value disabled>Select</option>
@@ -48,15 +55,6 @@ include(ABSPATH . 'dmap-includes/head.php');
                 </div>
               </div>
               <br></br>
-            </section>
-
-            <section id="prompt">
-              <p id="prompt-content">
-                Please wait while the application is loading.
-                <noscript>
-                  <br><em>JavaScrpt is required to use this application. This <a href="https://www.enable-javascript.com/" rel="noreferrer" target="_blank">article</a> may help you to enable JavaScript.</em>
-                </noscript>
-              </p>
             </section>
 
             <div id = "result" style = "display: none">
