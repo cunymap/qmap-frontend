@@ -13,6 +13,12 @@
             <a class="nav-link" href="<?php echo(SITEURL); ?>">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="https://github.com/cunymap/qmap-documentation" target="_blank">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://stats.uptimerobot.com/914x5TkK0j" target="_blank">System Status</a>
+          </li>
+          <li class="nav-item">
             <div class="nav-link">
               <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="darkSwitch">
@@ -27,7 +33,7 @@
               echo "<a href=\"" . SITEURL . "/admin/\">Admin Login</a>";
             }
             else {
-              echo "Current Admin: ";
+              echo "Admin: ";
               echo "<a href=\"" . SITEURL . "/admin/\">";
               echo htmlspecialchars($_SESSION["username"]);
               echo "</a> ";

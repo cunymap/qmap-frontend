@@ -12,7 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 // Render Dashboard page
-$page_title = "Dashboard";
+$page_title = "Dashboard - Admin";
 include(ABSPATH . 'dmap-includes/head.php');
 ?>
     <div class="container" style="padding-top: 5vh;">
@@ -21,22 +21,24 @@ include(ABSPATH . 'dmap-includes/head.php');
         </div>
         <div class="col-12 col-md-6">
           <div class="page-header">
-              <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Degree Maps admin page.</h1>
-              <p>Your login expires in
+              <h1 class="text-center">Admin Dashboard</h1>
+              <p>Current admin: <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b><br>
+                 You are from institute_id: <b><?php echo htmlspecialchars($_SESSION["institute_id"]); ?></b><br>
+                 Your login expires in<b>
                 <?php
                 if(!empty(trim($_SESSION["rememberme"]))) {
                   echo "7 days";
                 }
                 else {
-                  echo "24 minutes";
+                  echo "24 hours";
                 }
-                ?>.
+                ?></b>.
               </p>
           </div>
           <hr>
           <p>
               <h2>Map Actions:</h2>
-              <a href="#" class="btn btn-primary">Set up a New Map</a>
+              <a href="dmap-create-map.php" class="btn btn-primary">Set up a New Map</a>
               <a href="#" class="btn btn-secondary">Edit Existing Map</a>
               <a href="#" class="btn btn-danger">Remove a Map</a>
           </p>
@@ -46,6 +48,13 @@ include(ABSPATH . 'dmap-includes/head.php');
               <a href="#" class="btn btn-info">Reset Your Password</a>
               <a href="dmap-logout.php" class="btn btn-warning">Sign Out of Your Account</a>
           </p>
+          <?php if (trim($_SESSION["institute_id"]) == 0): ?>
+            <p>
+                <h2>Site Management:</h2>
+                <a href="#" class="btn btn-primary">List of All Map Admins</a>
+                <a href="dmap-signup.php" class="btn btn-primary">Create New User</a>
+            </p>
+          <?php endif ?>
         </div>
         <div class="col-12 col-md-3">
         </div>

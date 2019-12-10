@@ -1,11 +1,25 @@
 <?php
+// Initialize the session
+session_start();
+
+// Check if the user has logged in
+if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+    header("location: dmap-login.php");
+    exit;
+}
+// Check if the user is admin
+if(!(trim($_SESSION["institute_id"]) == 0)){
+    header("location: dmap-dashboard.php");
+    exit;
+}
+
 // Include config file
 require_once( dirname(__FILE__) . '/../dmap-config.php' );
 require_once( dirname(__FILE__) . '/dmap-db.php' );
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = $instcode = "";
-$username_err = $password_err = $confirm_password_err = $instcode_err = "";
+$username = $password = $confirm_password = $institute_id = "";
+$username_err = $password_err = $confirm_password_err = $institute_id_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -46,19 +60,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    // Validate instcode
-    if (empty(trim($_POST["instcode"]))) {
-        $instcode_err = "Please enter a instcode.";
+    // Validate institute_id
+    if (is_null(trim($_POST["institute_id"]))) {
+        $institute_id_err = "Please enter a valid institute_id.";
     } else {
-        $instcode = trim($_POST["instcode"]);
+        $institute_id = trim($_POST["institute_id"]);
     }
 
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($instcode_err)){
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($institute_id_err)){
 
         // Prepare a select statement
         $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-        $sql = "INSERT INTO " . $table_prefix . "users (username, password, instcode) VALUES ('" . $username . "', '" . $hashed_password . "', '" . $instcode . "')";
+        $sql = "INSERT INTO " . $table_prefix . "users (username, password, institute_id) VALUES ('" . $username . "', '" . $hashed_password . "', '" . $institute_id . "')";
         // Attempt to execute the prepared statement
         if (mysqli_query($link, $sql)) {
             // Optional: Redirect to login page
@@ -74,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 // Render Login page
-$page_title = "Sign Up";
+$page_title = "Create New Account - Admin";
 include(ABSPATH . 'dmap-includes/head.php');
 ?>
     <div class="container" style="padding-top: 5vh;">
@@ -82,7 +96,7 @@ include(ABSPATH . 'dmap-includes/head.php');
         <div class="col-12 col-md-4">
         </div>
         <div class="col-12 col-md-4">
-          <h2>Sign Up</h2>
+          <h2>Create New Account</h2>
           <p>For site admin use only; Please fill this form to create an account.</p>
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
               <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
@@ -100,16 +114,16 @@ include(ABSPATH . 'dmap-includes/head.php');
                   <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
                   <span class="help-block"><?php echo $confirm_password_err; ?></span>
               </div>
-              <div class="form-group <?php echo (!empty($instcode_err)) ? 'has-error' : ''; ?>">
-                  <label>Institution Code (instcode)</label>
-                  <input type="text" name="instcode" class="form-control" value="<?php echo $instcode; ?>">
-                  <span class="help-block"><?php echo $instcode_err; ?></span>
+              <div class="form-group <?php echo (!empty($institute_id_err)) ? 'has-error' : ''; ?>">
+                  <label>Institute (institute_id)</label>
+                  <input type="text" name="institute_id" class="form-control" value="<?php echo $institute_id; ?>">
+                  <span class="help-block">Fill out value 0 to create another site admin.</span>
+                  <span class="help-block"><?php echo $institute_id_err; ?></span>
               </div>
               <div class="form-group">
                   <input type="submit" class="btn btn-primary" value="Submit">
                   <input type="reset" class="btn btn-default" value="Reset">
               </div>
-              <p>Already have an account? <a href="dmap-login.php">Login here</a>.</p>
           </form>
         </div>
         <div class="col-12 col-md-4">
