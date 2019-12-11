@@ -13,7 +13,7 @@ define('DB_NAME', 'dmap');
 $table_prefix = 'dmap_';
 
 /* Define the dmap installation root URL. Do not put a slash at the end. */
-define('SITEURL', 'https://cs355web.herokuapp.com');
+define('SITEURL', 'https://venus.cs.qc.cuny.edu/~dmap');
 
 /* Absolute path to the dmap installation directory */
 if (!defined('ABSPATH'))
