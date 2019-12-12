@@ -21,6 +21,10 @@ xmlhttp.send();
 
 // load major list
 $('#campuses').on('change', function() {
+  document.getElementById("prompt-content").style.display = "block";
+  document.getElementById("result").style.display = "none";
+  document.getElementById("result-display").style.display = "none";
+  document.getElementById("prompt-content").innerHTML = "Choose your major.";
   document.getElementById("majors").innerHTML = "<option selected value disabled>Loading...</option>";
   document.getElementById("major").style.display = "block";
   document.getElementById("term").style.display = "none";
@@ -50,6 +54,8 @@ $('#campuses').on('change', function() {
 // load term list
 $('#majors').on('change', function() {
   document.getElementById("result").style.display = "none";
+  document.getElementById("term").style.display = "none";
+  document.getElementById("prompt-content").style.display = "block";
   var APItermURL = "https://cs355map.herokuapp.com/api/map/?id=";
   var campus = $("#campuses").val();
   var camp = document.getElementById("campuses");
