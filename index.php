@@ -28,28 +28,23 @@ include(ABSPATH . 'dmap-includes/head.php');
                   </p>
                 </section>
                 <div id = "campus">
-                  <select class = "search-bar" id = "campuses" onchange = "showMajor()">
-                    <option selected value disabled>Loading...</option>
-                    <option value = "qc">Queens College</option>
+                  <select class = "search-bar" id = "campuses">
+                      <option selected value disabled>Loading...</option>
                   </select>
                 </div>
                 <br>
                 <div id = "major" style = "display: none;">
                   <div>
-                    <select class = "search-bar" id = "majors" onchange = "showTerm()">
+                    <select class = "search-bar" id = "majors">
                       <option selected value disabled>Loading...</option>
-                      <option value = "cs">Computer Science</option>
-                      <option value = "math">Math</option>
                     </select>
                   </div>
                 </div>
                 <br>
                 <div id = "term" style = "display: none;">
                   <div>
-                    <select class = "search-bar" id = "terms" onchange = "showResult()">
-                      <option selected value disabled>Select</option>
-                      <option value = "201901">Spring 2019</option>
-                      <option value = "201902">Fall 2019</option>
+                    <select class = "search-bar" id = "terms">
+                      <option selected value disabled>Loading...</option>
                     </select>
                   </div>
                 </div>
@@ -57,35 +52,33 @@ include(ABSPATH . 'dmap-includes/head.php');
               <br></br>
             </section>
 
-            <div id = "result" style = "display: none">
-              <table class = "resultTable">
-                <tr>
-                  <th>Freshman</th>
-                </tr>
-                <tr id = "majorFreshman"></tr>
-              </table>
-              <br></br>
-              <table class = "resultTable">
-                <tr>
-                  <th>Sophomore</th>
-                </tr>
-                <tr id = "majorSophomore"></tr>
-              </table>
-              <br></br>
-              <table class = "resultTable">
-                <tr>
-                  <th>Junior</th>
-                </tr>
-                <tr id = "majorJunior"></tr>
-              </table>
-              <br></br>
-              <table class = "resultTable">
-                <tr>
-                  <th>Senior</th>
-                </tr>
-                <tr id = "majorSenior"></tr>
-              </table>
-            </div>
+            <br>
+            <p id = "result-display" style = "color: navy;"></p>
+            <div id = "result" style = "display: none;">
+              <h3 id = "semester_one"></h3>
+              <table id = "map_one"></table>
+              <br>
+              <h3 id = "semester_two"></h3>
+              <table id = "map_two"></table>
+              <br>
+              <h3 id = "semester_three"></h3>
+              <table id = "map_three"></table>
+              <br>
+              <h3 id = "semester_four"></h3>
+              <table id = "map_four"></table>
+              <br>
+              <h3 id = "semester_five"></h3>
+              <table id = "map_five"></table>
+              <br>
+              <h3 id = "semester_six"></h3>
+              <table id = "map_six"></table>
+              <br>
+              <h3 id = "semester_seven"></h3>
+              <table id = "map_seven"></table>
+              <br>
+              <h3 id = "semester_eight"></h3>
+              <table id = "map_eight"></table>
+            </div> 
           </div>
 
         </div>
@@ -123,30 +116,5 @@ include(ABSPATH . 'dmap-includes/head.php');
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dark-theme.js"></script>
     <script src="assets/js/course-ajax.js"></script>
-    <script>
-      function showMajor() {
-         document.getElementById("major").style.display = "block";
-         document.getElementById("term").style.display = "block";
-         document.getElementById("result").style.display = "none";
-         document.getElementById("prompt-content").innerHTML = "Choose your major.";
-      }
-      function showTerm() {
-         document.getElementById("term").style.display = "block";
-         document.getElementById("result").style.display = "none";
-         document.getElementById("prompt-content").innerHTML = "Choose your start term to see result.";
-      }
-      function showResult() {
-        document.getElementById("prompt-content").innerHTML = "The map is listed below:";
-         document.getElementById("result").style.display = "block";
-         var major = document.getElementById("majors");
-         var majorResult = major.options[major.selectedIndex].text;
-         var term = document.getElementById("terms");
-         var termResult = term.options[term.selectedIndex].text;
-         document.getElementById("majorFreshman").innerHTML = "Welcome to " + majorResult + " " + termResult;
-         document.getElementById("majorSophomore").innerHTML = "Welcome to " + majorResult + " " + termResult;
-         document.getElementById("majorJunior").innerHTML = "Welcome to " + majorResult + " " + termResult;
-         document.getElementById("majorSenior").innerHTML = "Welcome to " + majorResult + " " + termResult;
-      }
-    </script>
   </body>
 </html>
