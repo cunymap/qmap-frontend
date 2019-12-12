@@ -140,7 +140,7 @@ $('#terms').on('change', function() {
       var semester_seven = "<tr><th></th><th></th></tr>";
       var semester_eight = "<tr><th></th><th></th></tr>";
       for (var i = 0; i < mapObject.length; i++) {
-        var map = "<tr><td>" + mapObject[i].descr + "</td><td>" + mapObject[i].max_units + " Credits</td></tr>";
+        var map = "<tr><td style = 'width: 20em;'>" + mapObject[i].descr + "</td><td>" + mapObject[i].max_units + " Credits</td></tr>";
         if (mapObject[i].semester_num  == "1") {
           semester_one += map;
         }
