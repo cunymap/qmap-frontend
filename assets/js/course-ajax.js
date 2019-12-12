@@ -90,12 +90,12 @@ $('#terms').on('change', function() {
   
   var APImapURL = "https://cs355map.herokuapp.com/api/map/";
   var map_id = $("#terms").val();
-  APImapURL += map_id;
+  APImapURL += map_id + "/?format=json";
          
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 404){
-      document.getElementById("result-display").innerHTML = "No matching maps are found. Contact your advisor.";
+      document.getElementById("result-display").innerHTML = "No matching maps are found. Contact your school advisor.";
     }
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("result-display").innerHTML = "The map is listed below:";
