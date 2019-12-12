@@ -101,6 +101,7 @@ $('#terms').on('change', function() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 404){
       document.getElementById("result-display").innerHTML = "No matching maps are found. Contact your school advisor.";
+      document.getElementById("result").style.display = "none";
     }
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("result-display").innerHTML = "The map is listed below:";
@@ -112,24 +113,24 @@ $('#terms').on('change', function() {
       var sem = startTerm[0];
       var year = parseInt(startTerm[1]);
       if (sem == "Spring") {
-        document.getElementById("semester_one").innerHTML += "Spring " + String(year);
-        document.getElementById("semester_two").innerHTML += "Fall " + String(year);
-        document.getElementById("semester_three").innerHTML += "Spring " + String(year + 1);
-        document.getElementById("semester_four").innerHTML += "Fall " + String(year + 1);
-        document.getElementById("semester_five").innerHTML += "Spring " + String(year + 2);
-        document.getElementById("semester_six").innerHTML += "Fall " + String(year + 2);
-        document.getElementById("semester_seven").innerHTML += "Spring " + String(year + 3);
-        document.getElementById("semester_eight").innerHTML += "Fall " + String(year + 3);
+        document.getElementById("semester_one").innerHTML = "Spring " + String(year);
+        document.getElementById("semester_two").innerHTML = "Fall " + String(year);
+        document.getElementById("semester_three").innerHTML = "Spring " + String(year + 1);
+        document.getElementById("semester_four").innerHTML = "Fall " + String(year + 1);
+        document.getElementById("semester_five").innerHTML = "Spring " + String(year + 2);
+        document.getElementById("semester_six").innerHTML = "Fall " + String(year + 2);
+        document.getElementById("semester_seven").innerHTML = "Spring " + String(year + 3);
+        document.getElementById("semester_eight").innerHTML = "Fall " + String(year + 3);
       } 
       if (sem == "Fall") {
-        document.getElementById("semester_one").innerHTML += "Fall " + String(year);
-        document.getElementById("semester_two").innerHTML += "Spring " + String(year + 1);
-        document.getElementById("semester_three").innerHTML += "Fall " + String(year + 1);
-        document.getElementById("semester_four").innerHTML += "Spring " + String(year + 2);
-        document.getElementById("semester_five").innerHTML += "Fall " + String(year + 2);
-        document.getElementById("semester_six").innerHTML += "Spring " + String(year + 3);
-        document.getElementById("semester_seven").innerHTML += "Fall " + String(year + 3);
-        document.getElementById("semester_eight").innerHTML += "Spring " + String(year + 4);
+        document.getElementById("semester_one").innerHTML = "Fall " + String(year);
+        document.getElementById("semester_two").innerHTML = "Spring " + String(year + 1);
+        document.getElementById("semester_three").innerHTML = "Fall " + String(year + 1);
+        document.getElementById("semester_four").innerHTML = "Spring " + String(year + 2);
+        document.getElementById("semester_five").innerHTML = "Fall " + String(year + 2);
+        document.getElementById("semester_six").innerHTML = "Spring " + String(year + 3);
+        document.getElementById("semester_seven").innerHTML = "Fall " + String(year + 3);
+        document.getElementById("semester_eight").innerHTML = "Spring " + String(year + 4);
       }
       var semester_one = "<tr><th></th><th></th></tr>";
       var semester_two = "<tr><th></th><th></th></tr>";
