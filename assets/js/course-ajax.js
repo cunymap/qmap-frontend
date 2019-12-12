@@ -49,9 +49,6 @@ $('#campuses').on('change', function() {
 
 // load term list
 $('#majors').on('change', function() {
-  document.getElementById("prompt-content").innerHTML = "Choose your start term to see result.";
-  document.getElementById("terms").innerHTML = "<option selected value disabled>Loading...</option>";
-  document.getElementById("term").style.display = "block";
   document.getElementById("result").style.display = "none";
   var APItermURL = "https://cs355map.herokuapp.com/api/map/?id=";
   var campus = $("#campuses").val();
@@ -74,6 +71,9 @@ $('#majors').on('change', function() {
       document.getElementById("prompt-content").innerHTML = "Maps are not available for " + campResult + ", " + majorResult + ". Contact your school advisor.";
     }
     if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("prompt-content").innerHTML = "Choose your start term to see result.";
+      document.getElementById("terms").innerHTML = "<option selected value disabled>Loading...</option>";
+      document.getElementById("term").style.display = "block";
       var termsObject = JSON.parse(this.responseText);
       var termsHTML = "<option selected value disabled>Select</option>";
       for (var i = 0; i < termsObject.length; i++) {
