@@ -55,6 +55,8 @@ $('#majors').on('change', function() {
   document.getElementById("result").style.display = "none";
   var APItermURL = "https://cs355map.herokuapp.com/api/map/?id=";
   var campus = $("#campuses").val();
+  var camp = document.getElementById("campuses");
+  var campResult = camp.options[camp.selectedIndex].text;
   var major = document.getElementById("majors");
   var majorResult = major.options[major.selectedIndex].text;
   var maj_arr = majorResult.split(" , ");
@@ -68,6 +70,9 @@ $('#majors').on('change', function() {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     console.log("Loading major list for " + terms + "...");
+    if (this.readyState == 4 && this.status == 404) {
+      document.getElementById("prompt-content").innerHTML = "Maps are not available for " + campResult + ", " + majorResult + ". Contact your school advisor.";
+    }
     if (this.readyState == 4 && this.status == 200) {
       var termsObject = JSON.parse(this.responseText);
       var termsHTML = "<option selected value disabled>Select</option>";
