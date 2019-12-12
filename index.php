@@ -53,7 +53,7 @@ include(ABSPATH . 'dmap-includes/head.php');
             </section>
 
             <br>
-            <p id = "result-display" style = "color: navy;"></p>
+            <p id = "result-display" style = "color: #007bff; font-size: 1.4em;"></p>
             <div id = "result" style = "display: none;">
               <h3 id = "semester_one"></h3>
               <table id = "map_one"></table>
