@@ -29,7 +29,7 @@ $( document ).ready(function() {
 
 // Define Backend URL
 // Compatibility: const was introduced in ECMAScript 2015
-const backendAPIURL = "https://cs355map.herokuapp.com/";
+const backendAPIURL = "https://qmap-backend.herokuapp.com/";
 
 
 /**

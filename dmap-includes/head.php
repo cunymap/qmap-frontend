@@ -17,6 +17,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo(SITEURL); ?>/assets/img/favicon.ico">
 
+    <!-- Specify the base URL for all relative URLs -->
+    <base href="<?php echo(SITEURL); ?>/">
+
     <title><?php echo $page_title; ?> - CUNY Degree Maps</title>
   </head>
   <body>

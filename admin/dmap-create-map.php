@@ -20,7 +20,7 @@ $institute_id = trim($_SESSION["institute_id"]);
 $page_title = "Create Map - Admin";
 include(ABSPATH . 'dmap-includes/head.php');
 ?>
-    <div class="container" style="padding-top: 5vh;">
+    <div class="container" id="main-content">
       <div class="row">
         <div class="col-12">
           <div class="page-header">

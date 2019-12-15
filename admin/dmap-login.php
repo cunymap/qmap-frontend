@@ -101,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 $page_title = "Admin Login";
 include(ABSPATH . 'dmap-includes/head.php');
 ?>
-    <div class="container" style="padding-top: 5vh;">
+    <div class="container" id="main-content">
       <div class="row">
         <div class="col-12 col-md-4">
         </div>

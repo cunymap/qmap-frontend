@@ -1,3 +1,12 @@
+// Venus is the URL by default
+var resourceURL = "https://venus.cs.qc.cuny.edu/~dmap";
+// Dynamically fetch base URL from html
+$(document).ready(function(){
+  if ($("base").length){
+     resourceURL = $("base").attr("href");
+  }
+});
+
 const darkSwitch = document.getElementById('darkSwitch');
 window.addEventListener('load', () => {
   if (darkSwitch) {
@@ -27,11 +36,11 @@ function initTheme() {
   darkSwitch.checked = darkThemeSelected;
   if (darkThemeSelected) {
     document.body.setAttribute('data-theme', 'dark');
-    document.getElementById('cuny-logo').setAttribute('src', 'https://cs355web.herokuapp.com/assets/img/cuny-logo-white.png');
+    document.getElementById('cuny-logo').setAttribute('src', resourceURL + '/assets/img/cuny-logo-white.png');
   }
   else {
     document.body.removeAttribute('data-theme');
-    document.getElementById('cuny-logo').setAttribute('src', 'https://cs355web.herokuapp.com/assets/img/cuny-logo.png');
+    document.getElementById('cuny-logo').setAttribute('src', resourceURL + '/assets/img/cuny-logo.png');
   }
 }
 
@@ -46,10 +55,10 @@ function resetTheme() {
   if (darkSwitch.checked) {
     document.body.setAttribute('data-theme', 'dark');
     localStorage.setItem('darkSwitch', 'dark');
-    document.getElementById('cuny-logo').setAttribute('src', 'https://cs355web.herokuapp.com/assets/img/cuny-logo-white.png');
+    document.getElementById('cuny-logo').setAttribute('src', resourceURL + '/assets/img/cuny-logo-white.png');
   } else {
     document.body.removeAttribute('data-theme');
     localStorage.removeItem('darkSwitch');
-    document.getElementById('cuny-logo').setAttribute('src', 'https://cs355web.herokuapp.com/assets/img/cuny-logo.png');
+    document.getElementById('cuny-logo').setAttribute('src', resourceURL + '/assets/img/cuny-logo.png');
   }
 }

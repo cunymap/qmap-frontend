@@ -10,7 +10,7 @@ $page_title = "Home";
 include(ABSPATH . 'dmap-includes/head.php');
 ?>
     <!-- Home Form -->
-    <div class="container" style="padding-top: 5vh;">
+    <div class="container" id="main-content">
       <div class="row">
         <div class="col-12 col-md-3">
         </div>
@@ -23,7 +23,7 @@ include(ABSPATH . 'dmap-includes/head.php');
                   <p id="prompt-content">
                     Please wait while the application is loading.
                     <noscript>
-                    <br><em>JavaScrpt is required to use this application. This <a href="https://www.enable-javascript.com/" rel="noreferrer" target="_blank">article</a> may help you to enable JavaScript.</em>
+                    <br><em>JavaScrpt is required to use this application. This <a href="https://www.enable-javascript.com/" rel="noreferrer" target="_blank" style="text-decoration: underline;">article</a> may help you to enable JavaScript.</em>
                     </noscript>
                   </p>
                 </section>
@@ -78,7 +78,7 @@ include(ABSPATH . 'dmap-includes/head.php');
               <br>
               <h3 id = "semester_eight"></h3>
               <table id = "map_eight"></table>
-            </div> 
+            </div>
           </div>
 
         </div>
@@ -109,7 +109,7 @@ include(ABSPATH . 'dmap-includes/head.php');
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Custom JavsScript-->

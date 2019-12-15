@@ -15,7 +15,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 $page_title = "Dashboard - Admin";
 include(ABSPATH . 'dmap-includes/head.php');
 ?>
-    <div class="container" style="padding-top: 5vh;">
+    <div class="container" id="main-content">
       <div class="row">
         <div class="col-12 col-md-3">
         </div>

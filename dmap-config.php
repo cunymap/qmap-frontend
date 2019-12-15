@@ -13,10 +13,30 @@ define('DB_NAME', 'dmap');
 $table_prefix = 'dmap_';
 
 /* Define the dmap installation root URL. Do not put a slash at the end. */
-define('SITEURL', 'https://cs355web.herokuapp.com');
+define('SITEURL', 'https://venus.cs.qc.cuny.edu/~dmap');
+
+/* Define the backend installation URL. Do not put a slash at the end. */
+define('BACKENDURL', 'https://qmap-backend.herokuapp.com');
 
 /* Absolute path to the dmap installation directory */
 if (!defined('ABSPATH'))
   define('ABSPATH', dirname(__FILE__) . '/');
 
 /* That's it. Happy coding :D */
+
+/*
+ * The following code block allows frontend js to query frontend or backend
+ * URL. The response can be later requested by AJAX.
+ * Example: https://venus.cs.qc.cuny.edu/~dmap/dmap-config.php?fetchConfig=frontend
+ * Response: https://venus.cs.qc.cuny.edu/~dmap
+ */
+
+if (!empty(trim($_GET["fetchConfig"]))) {
+  if (trim($_GET["fetchConfig"]) == "frontend") {
+    echo SITEURL;
+  }
+  else if (trim($_GET["fetchConfig"]) == "backend") {
+    echo BACKENDURL;
+  }
+  else header("location: index.php");
+}
