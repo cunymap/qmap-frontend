@@ -17,7 +17,7 @@ function loadMap()
 {
   document.getElementById("delete_btn").hidden = true;
   var idField = document.getElementById("map_id");
-  var APIIdURL = "https://cs355map.herokuapp.com/api/map/";
+  var APIIdURL = "https://qmap-platform.herokuapp.com/api/map/";
   var id = idField.value;
   APIIdURL += id + "/?format=json";
 
