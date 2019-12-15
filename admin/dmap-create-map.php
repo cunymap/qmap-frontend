@@ -167,7 +167,7 @@ include(ABSPATH . 'dmap-includes/foot.php');
 <?php endif ?>
 
 <script>
-      var hostname = "https://cs355map.herokuapp.com" //"http://127.0.0.1:8000"
+      var hostname = "https://qmap-platform.herokuapp.com" //"http://127.0.0.1:8000"
       var endpoint = "/api/map/"
 
       $("#submitButton").click(function(event){

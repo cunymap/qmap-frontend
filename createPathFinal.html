@@ -119,7 +119,7 @@
 <br><br><br>
 
 <script>
-      var hostname = "https://cs355map.herokuapp.com" //"http://127.0.0.1:8000"
+      var hostname = "https://qmap-platform.herokuapp.com" //"http://127.0.0.1:8000"
       var endpoint = "/api/map/"
 
       $('#submitButton').on('click',function(){
@@ -257,7 +257,7 @@
       function loadDegrees()
       {
         var idField = document.getElementById("institute_id");
-        var APIIdURL = "https://cs355map.herokuapp.com/api/degrees/";
+        var APIIdURL = "https://qmap-platform.herokuapp.com/api/degrees/";
         var id = idField.value;
         APIIdURL += id + "/?format=json";
 
