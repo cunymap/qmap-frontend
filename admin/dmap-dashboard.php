@@ -22,8 +22,8 @@ include(ABSPATH . 'dmap-includes/head.php');
         <div class="col-12 col-md-6">
           <div class="page-header">
               <h1 class="text-center">Admin Dashboard</h1>
-              <p>Current admin: <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b><br>
-                 You are from institute_id: <b><?php echo htmlspecialchars($_SESSION["institute_id"]); ?></b><br>
+              <p>You have logged in as: <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b> (Submitter ID: <?php echo htmlspecialchars($_SESSION["id"]); ?>)<br>
+                 <span id="DashboardCampus">You are from institute_id: <b><?php echo htmlspecialchars($_SESSION["institute_id"]); ?></b></span><br>
                  Your login expires in<b>
                 <?php
                 if(!empty(trim($_SESSION["rememberme"]))) {
@@ -38,9 +38,9 @@ include(ABSPATH . 'dmap-includes/head.php');
           <hr>
           <p>
               <h2>Map Actions:</h2>
-              <a href="dmap-create-map.php" class="btn btn-primary">Set up a New Map</a>
+              <a href="<?php echo SITEURL; ?>/admin/dmap-create-map.php" class="btn btn-primary">Set up a New Map</a>
               <a href="#" class="btn btn-secondary">Edit Existing Map</a>
-              <a href="#" class="btn btn-danger">Remove a Map</a>
+              <a href="<?php echo SITEURL; ?>/admin/dmap-delete-map.php" class="btn btn-danger">Delete a Map</a>
           </p>
           <hr>
           <p>
@@ -63,3 +63,19 @@ include(ABSPATH . 'dmap-includes/head.php');
 <?php
 include(ABSPATH . 'dmap-includes/foot.php');
 ?>
+
+<?php if (trim($_SESSION["institute_id"]) == 0): ?>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var DashboardCampusHTML = "You are a site admin and have access to all campuses.";
+      $("#DashboardCampus").html(DashboardCampusHTML);
+    });
+  </script>
+<?php else: ?>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var DashboardCampusHTML = "You are from <b>" + campusNameByInstituteId(<?php echo trim($_SESSION["institute_id"]); ?>) + "</b>" ;
+      $("#DashboardCampus").html(DashboardCampusHTML);
+    });
+  </script>
+<?php endif ?>

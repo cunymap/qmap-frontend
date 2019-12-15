@@ -137,7 +137,7 @@ include(ABSPATH . 'dmap-includes/head.php');
             <div class="form-group text-center">
               <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p class="text-center"><a href="#" data-toggle="tooltip" data-placement="bottom" title="Contact the CUNY Service Desk at (646) 664-2311 or service.desk@cuny.edu.">Need Help?</a></p>
+            <p class="text-center"><a href="/admin/dmap-login.php#" data-toggle="tooltip" data-placement="bottom" title="Contact the CUNY Service Desk at (646) 664-2311 or service.desk@cuny.edu.">Need Help?</a></p>
             <p>This page is protected by reCAPTCHA (haven't implemented yet), and subject to the <a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://www.google.com/policies/terms/" target="_blank" rel="noopener noreferrer">Terms of service</a>.</p>
           </form>
         </div>
