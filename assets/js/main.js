@@ -1,3 +1,22 @@
+// Define Backend URL
+// Compatibility: const was introduced in ECMAScript 2015
+var frontendURL = "https://venus.cs.qc.cuny.edu/~dmap";
+var backendURL = "https://qmap-backend.herokuapp.com";
+
+$( document ).ready(function() {
+  if ($("base").length){
+     frontendURL = $("base").attr("href");
+     console.log("Frontend base URL is " + frontendURL);
+  }
+  $.get(frontendURL + "/dmap-config.php?fetchConfig=backend", function(data, status){
+    backendURL = data;
+    console.log("Loading backend base URL, Status: " + status);
+  });
+  // initialize Bootstrap tooltip
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+
 
 function showMajor() {
          document.getElementById("major").style.display = "block";
@@ -22,16 +41,6 @@ function showMajor() {
          document.getElementById("majorSenior").innerHTML = "Welcome to " + majorResult + " " + termResult;
       }
 
-// initialize Bootstrap tooltip
-$( document ).ready(function() {
-  $('[data-toggle="tooltip"]').tooltip();
-});
-
-// Define Backend URL
-// Compatibility: const was introduced in ECMAScript 2015
-const backendAPIURL = "https://qmap-backend.herokuapp.com/";
-
-
 /**
  * Summary: loadCampuses loads a institute_id - Campus Name list from Backend to
  * the specified select-option dropdown.
@@ -55,7 +64,7 @@ function loadCampuses(id) {
       console.log("Campus list ready and loadeded to #" + id);
     }
   };
-  var APIcampusURL = backendAPIURL + "api/campuses/?format=json";
+  var APIcampusURL = backendURL + "/api/campuses/?format=json";
   xmlhttp.open("GET", APIcampusURL, true);
   xmlhttp.send();
 }
@@ -63,7 +72,7 @@ function loadCampuses(id) {
 /**
  * Summary: loadSpecificCampus functions like loadCampuses(id), but only loads one campus.
  * @param  {string} id The id of Select element the function should inject options within.
- * @param  {string} i_id The institute_id the function should load.
+ * @param  {int} i_id The institute_id the function should load.
  * @return {void}
  */
 function loadSpecificCampus(id, i_id) {
@@ -74,11 +83,36 @@ function loadSpecificCampus(id, i_id) {
       var campusesObject = JSON.parse(this.responseText);
       var campusHTML = "<option selected value=\"" + campusesObject[i_id].institute_id + "\">" + campusesObject[i_id].descr + "</option>";
       console.log("Loading campus: " + campusesObject[i_id].institute_id + " " + campusesObject[i_id].descr);
-      }
       document.getElementById(id).innerHTML = campusHTML;
       console.log("Campus list ready and loadeded to #" + id);
-    };
-  var APIcampusURL = backendAPIURL + "api/campuses/?format=json";
+    }
+  };
+  var APIcampusURL = backendURL + "/api/campuses/?format=json";
   xmlhttp.open("GET", APIcampusURL, true);
   xmlhttp.send();
+}
+
+/**
+ * Summary: campusNameByInstituteId returns campus name by institute_id.
+ * @param  {int} id The institute_id this function should query backend for.
+ * @return {string} The respective campus name of requested institute_id.
+ */
+function campusNameByInstituteId(id) {
+  var APIcampusURL = backendURL + "/api/campuses/?format=json";
+  var campusData = $.ajax({
+    url: APIcampusURL,
+    type: 'get',
+    dataType: 'text/html',
+    success: function(data) {
+    },
+    error: function() {
+       return "Error";
+    },
+    async: false
+  });
+  var campusesObject = JSON.parse(campusData.responseText);
+  campusName = JSON.stringify(campusesObject[id].descr);
+  campusName = campusName.slice(1, campusName.length-1);
+  console.log("institute_id " + id + " has been loaded as " + campusName);
+  return(campusName);
 }

@@ -13,22 +13,30 @@ function validate()
     return true;
 }
 
+document.getElementById("searchButton").addEventListener("click", loadMap);
+$("#searchButton").click(function(event){
+  event.preventDefault();
+});
+
 function loadMap()
 {
   document.getElementById("delete_btn").hidden = true;
   var idField = document.getElementById("map_id");
-  var APIIdURL = "https://qmap-platform.herokuapp.com/api/map/";
+  var APIIdURL = backendURL;
+  APIIdURL += "/api/map/";
   var id = idField.value;
   APIIdURL += id + "/?format=json";
 
-   refreshTable();
+  refreshTable();
   var xmlhttp = new XMLHttpRequest();
   console.log(xmlhttp);
   xmlhttp.onreadystatechange = function() {
     console.log("Loading degree list for " + id + "...");
+
     if (this.readyState == 4 && this.status == 200) {
       var idsObject = JSON.parse(this.responseText);
       document.getElementById("output").innerHTML = "";
+
       for (var i = 0; i < idsObject.length; i++) {
         var tile = "sem" + idsObject[i].semester_num;
         var text = document.createTextNode(idsObject[i].subject + " " + idsObject[i].catalog + " -- " + idsObject[i].descr);
@@ -41,9 +49,10 @@ function loadMap()
 
     }
     else {
-      document.getElementById("output").innerHTML = "Path ID does not exists";
+      document.getElementById("output").innerHTML = "Path ID does not exist";
     }
-}
+
+};
 xmlhttp.open("GET", APIIdURL, true);
 xmlhttp.send();
 }
