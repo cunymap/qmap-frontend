@@ -29,7 +29,7 @@ $( document ).ready(function() {
 
 // Define Backend URL
 // Compatibility: const was introduced in ECMAScript 2015
-const backendAPIURL = "https://qmap-backend.herokuapp.com/";
+const backendAPIURL = "https://qmap-platform.herokuapp.com/";
 
 
 /**
@@ -81,4 +81,29 @@ function loadSpecificCampus(id, i_id) {
   var APIcampusURL = backendAPIURL + "api/campuses/?format=json";
   xmlhttp.open("GET", APIcampusURL, true);
   xmlhttp.send();
+}
+
+/**
+ * Summary: campusNameByInstituteId returns campus name by institute_id.
+ * @param  {int} id The institute_id this function should query backend for.
+ * @return {string} The respective campus name of requested institute_id.
+ */
+function campusNameByInstituteId(id) {
+  var APIcampusURL = backendURL + "/api/campuses/?format=json";
+  var campusData = $.ajax({
+    url: APIcampusURL,
+    type: 'get',
+    dataType: 'text/html',
+    success: function(data) {
+    },
+    error: function() {
+       return "Error";
+    },
+    async: false
+  });
+  var campusesObject = JSON.parse(campusData.responseText);
+  campusName = JSON.stringify(campusesObject[id].descr);
+  campusName = campusName.slice(1, campusName.length-1);
+  console.log("institute_id " + id + " has been loaded as " + campusName);
+  return(campusName);
 }
