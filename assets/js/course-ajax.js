@@ -15,7 +15,7 @@ xmlhttp.onreadystatechange = function() {
     console.log("Campus list Ready");
   }
 };
-var APIcampusURL = "https://qmap-backend.herokuapp.com/api/campuses/?format=json";
+var APIcampusURL = "https://qmap-platform.herokuapp.com/api/campuses/?format=json";
 xmlhttp.open("GET", APIcampusURL, true);
 xmlhttp.send();
 
@@ -28,7 +28,7 @@ $('#campuses').on('change', function() {
   document.getElementById("majors").innerHTML = "<option selected value disabled>Loading...</option>";
   document.getElementById("major").style.display = "block";
   document.getElementById("term").style.display = "none";
-  var APImajorURL = "https://qmap-backend.herokuapp.com/api/degrees/";
+  var APImajorURL = "https://qmap-platform.herokuapp.com/api/degrees/";
   var campus = $("#campuses").val();
   APImajorURL += campus + "/?format=json";
 
@@ -56,7 +56,7 @@ $('#majors').on('change', function() {
   document.getElementById("result").style.display = "none";
   document.getElementById("term").style.display = "none";
   document.getElementById("prompt-content").style.display = "block";
-  var APItermURL = "https://qmap-backend.herokuapp.com/api/map/?id=";
+  var APItermURL = "https://qmap-platform.herokuapp.com/api/map/?id=";
   var campus = $("#campuses").val();
   var camp = document.getElementById("campuses");
   var campResult = camp.options[camp.selectedIndex].text;
@@ -99,7 +99,7 @@ $('#majors').on('change', function() {
 $('#terms').on('change', function() {
   document.getElementById("prompt-content").style.display = "none";
 
-  var APImapURL = "https://qmap-backend.herokuapp.com/api/map/";
+  var APImapURL = "https://qmap-platform.herokuapp.com/api/map/";
   var map_id = $("#terms").val();
   APImapURL += map_id + "/?format=json";
 

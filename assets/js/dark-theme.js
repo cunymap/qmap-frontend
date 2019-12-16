@@ -1,5 +1,5 @@
 // Venus is the URL by default
-var resourceURL = "https://venus.cs.qc.cuny.edu/~dmap";
+var resourceURL = "https://qmap-web.herokuapp.com";
 // Dynamically fetch base URL from html
 $(document).ready(function(){
   if ($("base").length){
