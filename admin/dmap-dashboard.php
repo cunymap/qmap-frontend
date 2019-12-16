@@ -39,20 +39,20 @@ include(ABSPATH . 'dmap-includes/head.php');
           <p>
               <h2>Map Actions:</h2>
               <a href="<?php echo SITEURL; ?>/admin/dmap-create-map.php" class="btn btn-primary">Set up a New Map</a>
-              <a href="#" class="btn btn-secondary">Edit Existing Map</a>
+              <a href="<?php echo SITEURL; ?>/admin/dmap-dashboard.php#" class="btn btn-secondary">Edit Existing Map</a>
               <a href="<?php echo SITEURL; ?>/admin/dmap-delete-map.php" class="btn btn-danger">Delete a Map</a>
           </p>
           <hr>
           <p>
               <h2>User Management:</h2>
-              <a href="#" class="btn btn-info">Reset Your Password</a>
-              <a href="dmap-logout.php" class="btn btn-warning">Sign Out of Your Account</a>
+              <a href="<?php echo SITEURL; ?>/admin/dmap-dashboard.php#" class="btn btn-info">Reset Your Password</a>
+              <a href="<?php echo SITEURL; ?>/admin/dmap-logout.php" class="btn btn-warning">Sign Out of Your Account</a>
           </p>
           <?php if (trim($_SESSION["institute_id"]) == 0): ?>
             <p>
                 <h2>Site Management:</h2>
-                <a href="#" class="btn btn-primary">List of All Map Admins</a>
-                <a href="dmap-signup.php" class="btn btn-primary">Create New User</a>
+                <a href="<?php echo SITEURL; ?>/admin/dmap-dashboard.php#" class="btn btn-primary">List of All Map Admins</a>
+                <a href="<?php echo SITEURL; ?>/admin/dmap-signup.php" class="btn btn-primary">Create New User</a>
             </p>
           <?php endif ?>
         </div>
